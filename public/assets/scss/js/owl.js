@@ -1,0 +1,46 @@
+$(document).ready(function() {
+    $('.banner .owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    })
+    $('.contentV1 .owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            400:{
+                items:2
+            },
+            700:{
+                items:3
+            },
+            1000:{
+                items:4
+            },
+            1200:{
+                items:5
+            }
+        }
+    })
+});

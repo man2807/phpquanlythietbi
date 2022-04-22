@@ -1,0 +1,35 @@
+.content {
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  padding: 10px 15px; }
+  .content_top .filter {
+    border: 1px solid gray;
+    padding: 5px;
+    align-items: center; }
+    .content_top .filter-right {
+      margin-left: auto;
+      margin-right: 10px; }
+  .content_bottom {
+    margin-top: 15px;
+    border: 1px solid gray;
+    padding: 5px; }
+
+label {
+  margin: 0; }
+
+.combobox {
+  border: none;
+  border: 1px solid rgba(128, 128, 128, 0.37);
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 16px;
+  line-height: 46px; }
+
+.vip {
+  width: 120px; }
+
+.popup{
+  position: absolute;
+}
+
+/*# sourceMappingURL=supplies.min.css.map */

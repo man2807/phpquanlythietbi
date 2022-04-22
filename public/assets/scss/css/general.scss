@@ -1,0 +1,274 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin flex-postion($pos) {
+    align-items: center;
+    justify-self: $pos;
+}
+.addVat{
+    margin-top: 10px;
+}
+h4{
+    margin-top: 10px;
+}
+.menu{
+    cursor: pointer;
+    position: fixed;
+    height: 100vh;
+    padding: 0;
+    width: 200px;
+    background-color: #68c6fd;
+    &_item{
+        position: relative;
+        height: 45px;
+        list-style: none;
+        width: 200px;
+        padding-left: 20px;
+        a{
+            line-height: 45px;
+            text-decoration: none;
+        }
+        .sub{
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            background-color:beige ;
+            left: 100%;
+            top: 0;
+            visibility: hidden;
+            opacity: 0;
+            &_item{
+                padding-left: 25px;
+                list-style-type: none;
+                width: 200px;
+            } :hover{
+                background-color: #2EE59D;
+                box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            }
+        }
+       
+    }
+    .menu_item:hover{
+        background-color: #2EE59D;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        .sub{
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    
+}
+.btn{
+    background-color: rgb(158, 231, 231);
+}
+#vattu{
+    padding: 0;
+    margin: 0;
+    .vattuok{
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    .item{
+        border: 1px solid rgba(128, 128, 128, 0.315);
+        border-radius: 5px;
+        position: relative;
+        padding: 5px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    .iconClose{
+        cursor: pointer;
+        position: absolute;
+        top: -10px;
+        right: -7px;
+        margin-left: 10px;
+    }
+}
+.btnSubmit{
+    min-width: 300px;
+    visibility: visible;
+}
+.header{
+    box-shadow: 0px 5px 10px rgba(46, 229, 156, 0.205);
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(104, 198, 253);
+    .icon{
+        margin-top: 6px;
+        text-align: center;
+        img{
+            box-shadow: 0px 6px 5px #ccc;
+            border-radius: 50%;
+        }
+    }
+    .search{
+        &_box{
+            margin-top: 15px;
+            input{
+                    background: #fff;
+                    height: 30px;
+                    border: none;
+                    border-radius: 30px;
+                    padding: 10px 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    width: 90%;
+                    max-width: 500px;
+                    transition: 0.8s;
+                    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3);
+            }
+            :focus-visible{
+                outline: none;
+            }
+            button{
+                background: none;
+                border: none;
+                margin-left: -38px;
+                line-height: 0px;
+            }
+        }
+    }
+    .user{
+        cursor: pointer;
+        justify-content: end;
+        &_box{
+            height: 60px;
+            padding: 0 25px;
+            padding-top: 6px;
+            width: 100%;
+            img{
+                border-radius: 50%;
+            }
+            .name{
+                line-height: 50px;
+                margin-left: 20px;
+            }
+        }
+        .user_box:hover{
+            background-color: #2EE59D;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        }
+    }
+    .menu_fr{
+        .menu{
+            align-items: center;
+            width: 100% !important;
+            height: 60px !important;
+            &_item{
+                padding: 0;
+                margin-left: 10px;
+                text-align: center;
+                width: 10em;
+                .sub{
+                    left: 0;
+                    top: 100%;
+                    width: 100%;
+                    &_item{
+                        width: 100%;
+                        padding: 0;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+.site_main{
+    padding-top: 64px;
+}
+.content{
+    width: calc(100% - 200px);
+    margin-left: 200px;
+    padding: 10px 15px;
+   
+}
+.form-select{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.contentV1{
+    h4{
+       color: white; 
+    }
+    width: 100%;
+    .viewal{
+        margin-left: auto;
+        line-height: 46px;
+        padding: 0 15px;
+    }
+}
+.product_item{
+    width: 100%;
+    background-color: #68c6fd;
+    .top{
+        height: 214px;
+        img{
+            width: 100%;
+            height: 100%;
+            max-height: 214px;
+            object-fit: cover;
+        }
+    }
+    .bot{
+        .name{
+            h1{
+                font-size: 18px;
+                margin-bottom: 0;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        padding: 10px;
+        .info{
+            p{
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+            }
+            .dis{
+                em{
+                    display: -webkit-box;
+                   font-size: 13px;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        .action{
+            a:hover{
+                background-color: #2EE59D;
+                color: white;
+            }
+        }
+    }
+}
+.product_item:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.418);
+    transform: scale(1.02);
+    transition: all 1s;
+}
