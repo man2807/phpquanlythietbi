@@ -10,9 +10,18 @@ use App\Models\Danhmuc;
 use App\Models\Muon;
 use App\Models\Chitietmuon;
 use App\Models\User;
+use App\Models\Danhmuctaisan;
+use App\Imports\DMTaiSanImport;
+use App\Exports\DMTaiSanExport;
+use App\Imports\TaiSanImport;
+use App\Exports\TaiSanExport;
+use App\Imports\ThietbiImport;
+use App\Exports\ThietbiExport;
+use App\Imports\GiaoVienImport;
 use Exception;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SuppliesController extends Controller
 {
@@ -105,9 +114,7 @@ class SuppliesController extends Controller
 
     public function create(){
         if(Auth::check()){
-            $user = Auth::user();
-            $category = category::get();
-            return view('admin.supplies.create',compact('category','user'));
+            
         }else{
             $category = Danhmuc::get();
             return view('admin.supplies.create',compact('category'));
@@ -136,8 +143,7 @@ class SuppliesController extends Controller
     public function nhapexcel(){
         if(Auth::check()){
             $user = Auth::user();
-            $category = category::get();
-            return view('admin.supplies.nhapexcel',compact('category','user'));
+            
         }else{
             $category = Danhmuc::get();
             return view('admin.supplies.nhapexcel',compact('category'));
@@ -564,16 +570,107 @@ class SuppliesController extends Controller
         # code...
     }
     public function delete($id){
-        try{ 
-            $supplie =  supplie::find($id); 
-            if($supplie != null){
-                $supplie->delete();
-                return "success";
-            }else{
-                return "noid";
-            }
-        }catch(Exception $ex){
-            return "false";
-            }
+       
+    }
+
+    //Danh muc tai san
+    public function import()
+    {
+        // $thietbi = Thietbi::get();
+        // return view('admin.supplies.import',compact('thietbi'));
+        $data = DB::table('dmtaisans')->get();
+        return view('admin.supplies.import', compact('data'));
+    }
+   
+    // public function export()
+    // {
+    //     // $thietbi = Thietbi::get();
+    //     // return view('admin.supplies.import',compact('thietbi'));
+    //     $data = DB::table('dmtaisans')->get();
+    //     return view('admin.supplies.export', compact('data'));
+    // }
+    
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new DMTaiSanExport, 'Danh-Sach-Danh-Muc-Tai-San.xlsx');
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import2() 
+    {
+        Excel::import(new DMTaiSanImport,request()->file('file'));
+        return back()->with('success', 'Nhập dữ liệu thành công!');
+    }
+
+
+    // Tai San
+    public function importTaiSan()
+    {
+        // $thietbi = Thietbi::get();
+        // return view('admin.supplies.import',compact('thietbi'));
+        $data = DB::table('taisans')->get();
+        return view('admin.supplies.importTaiSan', compact('data'));
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function exportTaiSan() 
+    {
+        return Excel::download(new TaiSanExport, 'Danh-Sach-Tai-San.xlsx');
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function importTaiSan2() 
+    {
+        Excel::import(new TaiSanImport,request()->file('fileTS'));
+        return back()->with('success', 'Nhập dữ liệu thành công!');
+    }
+
+    // Thiet bi
+   public function importThietBi()
+    {
+        // $thietbi = Thietbi::get();
+        // return view('admin.supplies.import',compact('thietbi'));
+        $data = DB::table('thietbis')->get();
+        return view('admin.supplies.importThietBi', compact('data'));
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function exportThietBi() 
+    {
+        return Excel::download(new ThietbiExport, 'Danh-Sach-Thiet-Bi.xlsx');
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function importThietBi2() 
+    {
+        Excel::import(new ThietbiImport,request()->file('fileTB'));
+        return back()->with('success', 'Nhập dữ liệu thành công!');
+    }
+
+    // Giao Vien
+    public function importGiaoVien()
+    {
+        // $thietbi = Thietbi::get();
+        // return view('admin.supplies.import',compact('thietbi'));
+        $data = DB::table('users')->get();
+        return view('admin.supplies.importGiaoVien', compact('data'));
+    }
+    public function importGiaoVien2() 
+    {
+        Excel::import(new GiaoVienImport,request()->file('fileGV'));
+        return back()->with('success', 'Nhập dữ liệu thành công!');
     }
 }

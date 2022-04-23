@@ -30,14 +30,41 @@
             </li>            
         </ul>
     </li>
-    <li class="menu_item">
+    <!-- <li class="menu_item">
         <a href="{{ route('admin.supplies.nhapexcel') }}" class="link"><i class="fal fa-money-bill-wave"></i> Nhập TB file Excel</a>
         <ul class="sub">
+        </ul>
+    </li> -->
+
+    <li class="menu_item">
+        <a href="" class="link"><i class="fal fa-money-bill-wave"></i> Nhập dữ liệu</a>
+        <ul class="sub">
+            <li class="sub_item">
+                <a href="{{ route('admin.supplies.import') }}" class="link">Danh mục Tài sản</a>
+            </li>
+            <li class="sub_item">
+                <a href="{{ route('admin.supplies.importTaiSan') }}" class="link">Tài sản</a>
+            </li>
+            <li class="sub_item">
+                <a href="{{ route('admin.supplies.importThietBi') }}" class="link">Thiết bị</a>
+            </li>
+            <li class="sub_item">
+                <a href="{{ route('admin.supplies.importGiaoVien') }}" class="link">Giáo viên</a>
+            </li>
         </ul>
     </li>
     <li class="menu_item">
         <a href="" class="link"><i class="fal fa-money-bill-wave"></i> Xuất báo cáo</a>
         <ul class="sub">
+            <li class="sub_item">
+                <!-- <a href="{{ route('admin.supplies.export') }}" class="link">Danh mục Tài sản</a> -->
+            </li>
+            <li class="sub_item">
+                <a href="" class="link">Tài sản</a>
+            </li>
+            <li class="sub_item">
+                <a href="" class="link">Thiết bị</a>
+            </li>
         </ul>
     </li>
     

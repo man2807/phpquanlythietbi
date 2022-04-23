@@ -52,6 +52,29 @@ Route::name('admin.') ->group(function(){
         Route::post('/supplies/postfiltermuonts', [SuppliesController::class, 'postFiltermuonts'])->name('postFiltermuonts');
         Route::post('/supplies/postfiltertrats', [SuppliesController::class, 'postFiltertrats'])->name('postFiltertrats');
         Route::get('/supplies/nhapexcel', [SuppliesController::class, 'nhapexcel'])->name('nhapexcel');
+        
+        //Danh muc tai san
+        Route::get('/supplies/export', [SuppliesController::class,'export'])->name('export');
+        // Route::post('/supplies/import', [SuppliesController::class,'import'])->name('import');
+        Route::get('/supplies/import', [SuppliesController::class,'import'])->name('import');
+        Route::post('/supplies/import2', [SuppliesController::class,'import2'])->name('import2');
+
+        //Tai san
+        Route::get('/supplies/exportTaiSan', [SuppliesController::class,'exportTaiSan'])->name('exportTaiSan');
+        // Route::post('/supplies/import', [SuppliesController::class,'import'])->name('import');
+        Route::get('/supplies/importTaiSan', [SuppliesController::class,'importTaiSan'])->name('importTaiSan');
+        Route::post('/supplies/importTaiSan2', [SuppliesController::class,'importTaiSan2'])->name('importTaiSan2');
+
+        //Thiet Bi
+        Route::get('/supplies/exportThietBi', [SuppliesController::class,'exportThietBi'])->name('exportThietBi');
+        // Route::post('/supplies/import', [SuppliesController::class,'import'])->name('import');
+        Route::get('/supplies/importThietBi', [SuppliesController::class,'importThietBi'])->name('importThietBi');
+        Route::post('/supplies/importThietBi2', [SuppliesController::class,'importThietBi2'])->name('importThietBi2');
+
+        //Giao vien
+        Route::get('/supplies/importGiaoVien', [SuppliesController::class,'importGiaoVien'])->name('importGiaoVien');
+        Route::post('/supplies/importGiaoVien2', [SuppliesController::class,'importGiaoVien2'])->name('importGiaoVien2');
+
     });
     Route::name('bill.') ->group(function(){
         Route::get('/bill', [BillController::class, 'index'])->name('index');
