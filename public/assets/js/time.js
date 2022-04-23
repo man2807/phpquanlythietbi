@@ -377,7 +377,6 @@ $(document).ready(function(){
       e.preventDefault();
       var _this =$(this);
       var json_data = [];
-      var idgvs = [];
       var elements = document.getElementsByClassName('slmuon');
       var id = document.getElementsByClassName('slmuon2');
       var idgv = document.getElementById('tengv');
@@ -396,13 +395,13 @@ $(document).ready(function(){
       
    // alert(json_data);
     });
-    $('body').on('click', '#tra', function(e) {
+
+    $('body').on('click', '#muonts', function(e) {
       e.preventDefault();
       var _this =$(this);
       var json_data = [];
-      var idgvs = [];
-      var elements = document.getElementsByClassName('slmuon');
-      var id = document.getElementsByClassName('slmuon2');
+      var elements = document.getElementsByClassName('slmuonts');
+      var id = document.getElementsByClassName('slmuon2ts');
       var idgv = document.getElementById('tengv');
       for (let i = 0; i<elements.length; i++){
         if(elements[i].value > 0){
@@ -412,10 +411,82 @@ $(document).ready(function(){
             json_data.push(elements[i].value);
         }
       }
-      $('#datajson').val(json_data);
-      $('#dataidgv').val(idgv.value);
-      $('.popup').toggleClass();
-      document.forms["FormMuon"].submit();
+      $('#datajsonts').val(json_data);
+      $('#dataidgvts').val(idgv.value);
+      $('.popupts').toggleClass();
+      document.forms["FormMuonts"].submit();
+      
+   // alert(json_data);
+    });
+
+    $('body').on('click', '#tra', function(e) {
+      e.preventDefault();
+      var _this =$(this);
+      var json_data = [];
+      var sltot = document.getElementsByClassName('sltratot');
+      var slhong = document.getElementsByClassName('sltrahong');
+      var idchitietmuon = document.getElementsByClassName('sltra2');
+      var idtb = document.getElementsByClassName('sltra3');
+      var idgv = document.getElementById('tengv');
+      
+      for (let i = 0; i<sltot.length; i++){
+        if(sltot[i].value > 0){
+            //lấy id và số lượng thay đổi của thiết bị
+            //json_data  = json_data + "'"+id[i].value+"':'"+ elements[i].value +"',";
+            json_data.push(idchitietmuon[i].value);
+            json_data.push(sltot[i].value);
+            json_data.push(slhong[i].value);
+            json_data.push(idtb[i].value);
+        }
+        if (slhong[i].value > 0){
+          //lấy id và số lượng thay đổi của thiết bị
+          //json_data  = json_data + "'"+id[i].value+"':'"+ elements[i].value +"',";
+          json_data.push(idchitietmuon[i].value);
+          json_data.push(sltot[i].value);
+          json_data.push(slhong[i].value);
+          json_data.push(idtb[i].value);
+        }
+      }
+      $('#datajson2').val(json_data);
+      $('#dataidgv2').val(idgv.value);
+      $('.popup2').toggleClass();
+      document.forms["FormTra"].submit();
+      
+   // alert(json_data);
+    });
+
+    $('body').on('click', '#trats', function(e) {
+      e.preventDefault();
+      var _this =$(this);
+      var json_data = [];
+      var sltot = document.getElementsByClassName('sltratotts');
+      var slhong = document.getElementsByClassName('sltrahongts');
+      var idchitietmuon = document.getElementsByClassName('sltra2ts');
+      var idtb = document.getElementsByClassName('sltra3ts');
+      var idgv = document.getElementById('tengv');
+      
+      for (let i = 0; i<sltot.length; i++){
+        if(sltot[i].value > 0){
+            //lấy id và số lượng thay đổi của thiết bị
+            //json_data  = json_data + "'"+id[i].value+"':'"+ elements[i].value +"',";
+            json_data.push(idchitietmuon[i].value);
+            json_data.push(sltot[i].value);
+            json_data.push(slhong[i].value);
+            json_data.push(idtb[i].value);
+        }
+        if (slhong[i].value > 0){
+          //lấy id và số lượng thay đổi của thiết bị
+          //json_data  = json_data + "'"+id[i].value+"':'"+ elements[i].value +"',";
+          json_data.push(idchitietmuon[i].value);
+          json_data.push(sltot[i].value);
+          json_data.push(slhong[i].value);
+          json_data.push(idtb[i].value);
+        }
+      }
+      $('#datajson2ts').val(json_data);
+      $('#dataidgv2ts').val(idgv.value);
+      $('.popup2ts').toggleClass();
+      document.forms["FormTrats"].submit();
       
    // alert(json_data);
     });

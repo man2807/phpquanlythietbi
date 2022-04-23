@@ -7,7 +7,7 @@
             <div class="content_top">
                 <div class="filter flex">
                     <div class="filter-left ">
-                        <form action="{{ route('admin.supplies.postFiltermuontb') }}" method="post">
+                        <form action="{{ route('admin.supplies.postFiltertrats') }}" method="post">
                         {{ csrf_field() }} 
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Bộ môn</label>
                                 <select name="bomon" id="bomon" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'>
@@ -18,8 +18,8 @@
                                     <option value="3">Sinh</option>
                                 </select>
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Giáo Viên</label>
-                            <select name="tengv" id="tengv" class="gvcombobox">
-                                <option value="0">Tất cả</option>
+                            <select name="idgv" id="tengv" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'> 
+                                <option value="">Chọn</option>
                                 @if ($giaoviens!=null){
                                     @foreach($giaoviens as $giaovien)
                                         <option value="{{ $giaovien->id }}">{{ $giaovien->tengv }}</option>
@@ -28,9 +28,9 @@
                                 @endif
                             </select>  
                             <label for="" class="list"><i style="color: blue"></i> Ngày mượn:</label>
-                            <label for="" class="list"><i style="color: blue"></i>{{ $today }}</label> 
-                        </form> 
-                        <button id='muon' class="btn btn-primary">Mượn thiết bị</button>  
+                            <label for="" class="list"><i style="color: blue"></i>{{ $today }}</label>
+                        </form>   
+                        <button style="text-align: center;"  class="btn btn-primary">Trả thiết bị</button>
                     </div>
                     <!-- <div class="filter-right">
                         <label for="" class="list"><i style="color: blue" class="fal fa-location"></i> Tình trạng</label>
@@ -44,8 +44,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="content_bottom ">
-                <table class="table table-hover table-striped text-center">
+            <div class="content_bottom">
+                <table class="table table-hover table-dark">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -58,8 +58,10 @@
                         <th scope="col">Ghi chú</th>
                         <th scope="col">Ngày mua</th>
                         <th scope="col">Giá mua</th>
+                        <th scope="col">Tổng số lượng mượn</th>
                         <th scope="col">Số lượng mượn</th>
-                        <th scope="col">Số lượng mượn</th>
+                        <th scope="col" for="sltt">Số lượng trả tốt</th>
+                        <th scope="col" for="slth">Số lượng trả hỏng</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -77,8 +79,10 @@
                                     <td>{{ $item->ngaymua }}</td>
                                     <td>{{ $item->giamua }}</td>
                                     <td>{{ $item->soluongmuon }}</td>
-                                    <input class='slmuon2' value="{{ $item->id }}" type="hidden">
-                                    <td><input class='slmuon' id= "input" data-id='{{ $item->id }}' type="number" value="0" min="0" max="5"></input></td>
+                                    <td></td>
+                                    <input class='sltra2ts' value="{{ $item->id }}" type="hidden">
+                                    <td><input class='sltratotts' id= "input" data-id='{{ $item->id }}' name="sltt" type="number" value="0"  min="0" max="5"></input></td>
+                                    <td><input class='sltrahongts' id= "input" data-id='{{ $item->id }}' name="slth" type="number" value="0"  min="0" max="5"></input></td>
                                 </tr>
                             </div>
                         @endforeach      

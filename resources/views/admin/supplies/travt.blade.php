@@ -18,8 +18,8 @@
                                     <option value="3">Sinh</option>
                                 </select>
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Giáo Viên</label>
-                            <select name="tengv" id="tengv" class="category combobox">
-                                <option value="0">Tất cả</option>
+                            <select name="idgv" id="tengv" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'> 
+                                <option value="">Chọn</option>
                                 @if ($giaoviens!=null){
                                     @foreach($giaoviens as $giaovien)
                                         <option value="{{ $giaovien->id }}">{{ $giaovien->tengv }}</option>
@@ -29,10 +29,8 @@
                             </select>  
                             <label for="" class="list"><i style="color: blue"></i> Ngày mượn:</label>
                             <label for="" class="list"><i style="color: blue"></i>{{ $today }}</label>
-
-                            <button style="text-align: center;" id='tra' class="btn btn-primary">Trả thiết bị</button>
                         </form>   
-                          
+                        <button style="text-align: center;"  class="btn btn-primary">Trả thiết bị</button>
                     </div>
                     <!-- <div class="filter-right">
                         <label for="" class="list"><i style="color: blue" class="fal fa-location"></i> Tình trạng</label>

@@ -1,18 +1,26 @@
 <?php
 
 namespace App\Http\Controllers\web;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\supplie;
+use App\Models\Thietbi;
+use App\Models\Taisan;
+use App\Models\Danhmuc;
+use App\Models\Muon;
+use App\Models\Chitietmuon;
+use App\Models\User;
 
 class ViewController extends Controller
 {
     //
     public function index(){
-        $supplie1 = supplie::where('status', 1)->where('category','=','2')->limit(20)->get();
-        $supplie2 = supplie::where('status', 1)->where('category','=','5')->limit(20)->get();
-        $supplie3 = supplie::where('status', 1)->where('category','=','4')->limit(20)->get();
-        return view('web.home.index',compact('supplie1','supplie2','supplie3'));
+        if(Auth::check()){
+        }else{
+            #$user = Auth::user();
+            $supplie = Thietbi::get();
+            return view('admin.supplies.index',compact('supplie'));
+            //return redirect()->route('admin.login');
+        }
     }
 }

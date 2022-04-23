@@ -7,7 +7,7 @@
             <div class="content_top">
                 <div class="filter flex">
                     <div class="filter-left ">
-                        <form action="{{ route('admin.supplies.postFiltermuontb') }}" method="post">
+                        <form action="{{ route('admin.supplies.postFiltermuonts') }}" method="post">
                         {{ csrf_field() }} 
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Bộ môn</label>
                                 <select name="bomon" id="bomon" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'>
@@ -30,7 +30,7 @@
                             <label for="" class="list"><i style="color: blue"></i> Ngày mượn:</label>
                             <label for="" class="list"><i style="color: blue"></i>{{ $today }}</label> 
                         </form> 
-                        <button id='muon' class="btn btn-primary">Mượn thiết bị</button>  
+                        <button id='muonts' class="btn btn-primary">Mượn thiết bị</button>  
                     </div>
                     <!-- <div class="filter-right">
                         <label for="" class="list"><i style="color: blue" class="fal fa-location"></i> Tình trạng</label>
@@ -44,8 +44,8 @@
                     </div> -->
                 </div>
             </div>
-            <div class="content_bottom ">
-                <table class="table table-hover table-striped text-center">
+            <div class="content_bottom">
+                <table class="table table-hover table-dark">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -77,8 +77,8 @@
                                     <td>{{ $item->ngaymua }}</td>
                                     <td>{{ $item->giamua }}</td>
                                     <td>{{ $item->soluongmuon }}</td>
-                                    <input class='slmuon2' value="{{ $item->id }}" type="hidden">
-                                    <td><input class='slmuon' id= "input" data-id='{{ $item->id }}' type="number" value="0" min="0" max="5"></input></td>
+                                    <input class='slmuon2ts' value="{{ $item->id }}" type="hidden">
+                                    <td><input class='slmuonts' id= "input" data-id='{{ $item->id }}' type="number" value="0" min="0" max="5"></input></td>
                                 </tr>
                             </div>
                         @endforeach      
