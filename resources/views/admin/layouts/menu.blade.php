@@ -6,10 +6,7 @@
         <a href="" class="link"><i class="fal fa-tasks"></i> Quản lý tài sản công</a>
         <ul class="sub">
             <li class="sub_item">
-                <a href="{{ route('admin.supplies.muonts') }}" class="link">Mượn tài sản</a>
-            </li>
-            <li class="sub_item">
-                <a href="{{ route('admin.supplies.trats') }}" class="link">Trả tài sản</a>
+                <a href="{{ route('admin.supplies.muonts') }}" class="link">Cập nhật tài sản</a>
             </li>   
             <li class="sub_item">
                 <a href="{{ route('admin.supplies.indexts') }}" class="link">Thống kê tài sản</a>
