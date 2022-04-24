@@ -1,28 +1,4 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Import Export Excel to database</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-</head>
-<body>
-   
-<div class="container">
 
-    <div class="card bg-light mt-3">
-        <div class="card-header">
-            NHẬP, XUẤT DANH MỤC TÀI SẢN
-        </div>
-        <div class="card-body">
-            <form action="{{ route('admin.supplies.import2') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">Nhập</button>
-                <a class="btn btn-warning" href="{{ route('admin.supplies.export') }}">Xuất</a>
-            </form>
-        </div>
-    </div>
-</div> -->
 @extends('admin.layouts.app')
 @section('content')
 <!DOCTYPE html>
@@ -32,6 +8,7 @@
     <title>Nhập dữ liệu Tài sản</title>
     
     <link rel="stylesheet" href="assets/css/supplies.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
@@ -92,9 +69,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <!-- <table class="table table-striped table-bordered" style="text-align: center;"> -->
-                                <tr>
+                        <table class="table table-bordered table-striped text-center">
+                    <thead>
+                      <tr class="bg-info">
                                     <th>ID</th>
                                     <th>Mã Thiết Bị</th>
                                     <th>Tên Thiết Bị</th>

@@ -31,6 +31,7 @@
 <head>
     <title>Nhập dữ liệu Tài sản</title>
     <link rel="stylesheet" href="assets/css/supplies.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -88,8 +89,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <tr>
+                        <table class="table table-bordered table-striped text-center">
+                    <thead>
+                      <tr class="bg-info">
                                     <th>ID</th>
                                     <th>Mã Tài Sản</th>
                                     <th>Tên Tài Sản</th>

@@ -34,7 +34,7 @@
     </li> -->
 
     <li class="menu_item">
-        <a href="{{ route('admin.supplies.import') }}" class="link"><i class="fal fa-money-bill-wave"></i> Nhập dữ liệu</a>
+        <a href="{{ route('admin.supplies.import') }}" class="link"><i class="fal fa-money-bill-wave"></i> Nhập/Xuất dữ liệu</a>
         <ul class="sub">
             <li class="sub_item">
                 <a href="{{ route('admin.supplies.import') }}" class="link">Danh mục Tài sản</a>
@@ -50,19 +50,6 @@
             </li>
         </ul>
     </li>
-    <li class="menu_item">
-        <a href="" class="link"><i class="fal fa-money-bill-wave"></i> Xuất báo cáo</a>
-        <ul class="sub">
-            <li class="sub_item">
-                <!-- <a href="{{ route('admin.supplies.export') }}" class="link">Danh mục Tài sản</a> -->
-            </li>
-            <li class="sub_item">
-                <a href="" class="link">Tài sản</a>
-            </li>
-            <li class="sub_item">
-                <a href="" class="link">Thiết bị</a>
-            </li>
-        </ul>
-    </li>
+    
     
 </ul>

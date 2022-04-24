@@ -3,6 +3,7 @@
     <div class="main flex">
         @include('admin.layouts.menu')
         <link rel="stylesheet" href="assets/css/supplies.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <div class="content">
             <div class="content_top">
                 <div class="filter flex">
@@ -43,10 +44,21 @@
                     </div> -->
                 </div>
             </div>
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ session('success') }}
+            </div>
+            @elseif(session('failed'))
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ session('failed') }}
+            </div>
+            @endif
             <div class="content_bottom ">
-                <table class="table table-hover table-striped text-center">
+                <table class="table table-bordered table-striped text-center">
                     <thead>
-                      <tr>
+                      <tr class="bg-info">
                         <th scope="col">#</th>
                         <th scope="col">Tên thiết bị</th>
                         <th scope="col">Mô tả</th>

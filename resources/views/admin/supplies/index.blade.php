@@ -21,9 +21,9 @@
                 </div>
             </div>
             <div class="content_bottom">
-                <table class="table table-hover table-dark">
+            <table class="table table-bordered table-striped text-center">
                     <thead>
-                      <tr>
+                      <tr class="bg-info">
                         <th scope="col">#</th>
                         <th scope="col">Tên thiết bị</th>
                         <th scope="col">Mô tả</th>

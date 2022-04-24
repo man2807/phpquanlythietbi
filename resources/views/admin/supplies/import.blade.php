@@ -30,6 +30,7 @@
 
 <head>
     <title>Nhập dữ liệu Danh mục Tài sản</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/supplies.min.css">
 </head>
 
@@ -88,8 +89,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <tr>
+                        <table class="table table-bordered table-striped text-center">
+                    <thead>
+                      <tr class="bg-info">
                                     <th>ID</th>
                                     <th>Mã DMTS</th>
                                     <th>Tên DMTS</th>
