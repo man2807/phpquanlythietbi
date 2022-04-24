@@ -18,7 +18,7 @@ class CreateThietBiTable extends Migration
             $table->string('matb')->nullable();
             $table->string('tentb')->nullable();
             $table->Integer('iddanhmuc')->nullable();
-            $table->Integer('idbomon')->nullable();
+            $table->string('idbomon')->nullable();
             $table->string('mota')->nullable();
             $table->Integer('soluong')->nullable();
             $table->string('donvitinh')->nullable();

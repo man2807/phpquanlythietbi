@@ -10,18 +10,12 @@
                         <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Thể loại</label>
                         <select name="category" id="category" class="category combobox">
                             <option value="1">Tất cả</option>
-                            <option value="2">Thiết bị PC</option>
-                            <option value="3">Thiết bị Laptop</option>
-                            <option value="4">Phụ kiện</option>
                         </select>                        
                     </div>
                     <div class="filter-right">
                         <label for="" class="list"><i style="color: blue" class="fal fa-location"></i> Tình trạng</label>
                         <select name="category" id="category" class="category combobox">
                             <option value="1">Tất cả</option>
-                            <option value="2">Còn hàng</option>
-                            <option value="3">Đang được bán</option>
-                            <option value="4">Hết hàng</option>
                         </select>
                     </div>
                 </div>

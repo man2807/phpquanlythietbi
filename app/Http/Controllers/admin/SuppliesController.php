@@ -8,6 +8,7 @@ use App\Models\Thietbi;
 use App\Models\Taisan;
 use App\Models\Danhmuc;
 use App\Models\Muon;
+use App\Models\Bomon;
 use App\Models\Chitietmuon;
 use App\Models\User;
 use App\Models\Danhmuctaisan;
@@ -61,23 +62,9 @@ class SuppliesController extends Controller
             return view('admin.supplies.muonvt',compact('giaoviens','today','supplie','user'));
         }else{
             #$user = Auth::user();
+            $bomons = Bomon::get();
             $supplie = Thietbi::get();
-            return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
-            //return redirect()->route('admin.login');
-        }
-    }
-
-    public function muonts(){
-        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-        $giaoviens = 0;
-        if(Auth::check()){
-            $user = Auth::user();
-            $supplie = Taisan::get();
-            return view('admin.supplies.muonvt',compact('giaoviens','today','supplie','user'));
-        }else{
-            #$user = Auth::user();
-            $supplie = Taisan::get();
-            return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
+            return view('admin.supplies.muonvt',compact('bomons','giaoviens','today','supplie'));
             //return redirect()->route('admin.login');
         }
     }
@@ -91,8 +78,9 @@ class SuppliesController extends Controller
             return view('admin.supplies.travt',compact('giaoviens','today','supplie','user'));
         }else{
             #$user = Auth::user();
+            $bomons = Bomon::get();
             $supplie = Thietbi::get();
-            return view('admin.supplies.travt',compact('giaoviens','today','supplie'));
+            return view('admin.supplies.travt',compact('bomons','giaoviens','today','supplie'));
             //return redirect()->route('admin.login');
         }
     }
@@ -158,12 +146,11 @@ class SuppliesController extends Controller
             $data = $request->input();
             $array = explode(',', $data["data"]);
             $idgv = $data["idgv"];
-            
             try{
                 $giaovien = User::find($idgv);
-                echo($giaovien);
 
                 $muon = new Muon;
+                $muon->mamuon = null;
                 $muon->username = $giaovien->tengv;
                 $muon->iduser = $idgv;
                 $muon->ngaymuon = Carbon::now('Asia/Ho_Chi_Minh');
@@ -208,7 +195,6 @@ class SuppliesController extends Controller
             
             try{
                 $giaovien = User::find($idgv);
-                echo($giaovien);
 
                 $muon = new Muon;
                 $muon->username = $giaovien->tengv;
@@ -288,64 +274,11 @@ class SuppliesController extends Controller
                 }
                 
                 //return view('admin.supplies.travt',compact('supplie','user'));
-                //return redirect('supplies/travt')->with('success',"Mượn thiết bị thành công !");
+                return redirect('supplies/travt')->with('success',"Trả thiết bị thành công !");
                 }
             catch(Exception $e)
             {
-                //return redirect('supplies/create')->with('failed',"Thêm sản phẩm thất bại !");
-            }
-            //return redirect()->route('admin.login');
-        }
-    }
-
-    public function postTrats(Request $request){
-        if(Auth::check()){  
-
-        }else{
-            $data = $request->input();
-            $array = explode(',', $data["data"]);
-            $idgv = $data["idgv"];
-            try{
-                $giaovien = User::find($idgv);
-                
-
-                $muoncheck = DB::table('muons')->where([
-                        ['iduser','=',$data["idgv"]],
-                        ['ngaytra','=',null],
-                    ])->get();
-                foreach($muoncheck as $muon){
-                    for($i = 0; $i< count($array);$i+=4){
-                        $ctmuons = DB::table('chitietmuons')->where([
-                            ['mamuon','=',$muon->id],
-                            ['id','=',$array[$i]],
-                        ])->get();
-                        foreach($ctmuons as $ctmuon){
-                            $thietbi = Taisan::find($array[$i+3]);
-                            $thietbi->soluongmuon = $thietbi->soluongmuon - $array[$i+1] - $array[$i+2];
-                            $thietbi->save();
-
-                            $chitietmuon= Chitietmuon::find($ctmuon->id);
-                            $chitietmuon->soluongmuon = $chitietmuon->soluongmuon - $array[$i+1] - $array[$i+2];
-                            $chitietmuon->soluongtratot = $array[$i+1];
-                            $chitietmuon->soluongtrahong = $array[$i+2];
-                            if($chitietmuon->soluongmuon ==0){
-                                $chitietmuon->status = 0;
-                            }
-                            $chitietmuon->save();
-
-                        }
-                    }
-                    $tra= Muon::find($muon->id);
-                    $tra->ngaytra = Carbon::now('Asia/Ho_Chi_Minh');
-                    $tra->save();
-                }
-                
-                //return view('admin.supplies.travt',compact('supplie','user'));
-                //return redirect('supplies/travt')->with('success',"Mượn thiết bị thành công !");
-                }
-            catch(Exception $e)
-            {
-                //return redirect('supplies/create')->with('failed',"Thêm sản phẩm thất bại !");
+                return redirect('supplies/travt')->with('failed',"Trả thiết bị thất bại !");
             }
             //return redirect()->route('admin.login');
         }
@@ -358,12 +291,14 @@ class SuppliesController extends Controller
             $data = $request->input();
             $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
             $giaoviens = null;
+            $bomons = Bomon::get();
             //$iddata = Object.keys($data);
             //$data["image"] = SuppliesController::insert_image($request);
-            if ($data["bomon"] !=0){
-                try{ $supplie = Thietbi::where('idbomon','=',$data["bomon"])->get();
+            if ($data["bomon"] !=null ){
+                try{ 
+                    $supplie = Thietbi::where('idbomon','=',$data["bomon"])->get();
                     $giaoviens = User::where('idbomon','=',$data["bomon"])->get();         
-                    return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
+                    return view('admin.supplies.muonvt',compact('bomons','giaoviens','today','supplie'));
                     }
                     catch(Exception $e)
                     {
@@ -371,7 +306,7 @@ class SuppliesController extends Controller
                     }
             }else{
                 $supplie = Thietbi::get();
-                return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
+                return view('admin.supplies.muonvt',compact('bomons','giaoviens','today','supplie'));
             }
             //return redirect()->route('admin.login');
         }
@@ -384,8 +319,8 @@ class SuppliesController extends Controller
             $data = $request->input();
             $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
             $giaoviens = null;
-            //$iddata = Object.keys($data);
-            //$data["image"] = SuppliesController::insert_image($request);
+            $bomons = Bomon::get();
+            echo($data["bomon"]);
             if ($data["bomon"] !=0){
                 try{ $supplie = Taisan::where('idbomon','=',$data["bomon"])->get();
                     $giaoviens = User::where('idbomon','=',$data["bomon"])->get();         
@@ -393,11 +328,11 @@ class SuppliesController extends Controller
                     }
                     catch(Exception $e)
                     {
-                        return redirect('supplies/create')->with('failed',"Thêm sản phẩm thất bại !");
+                        //return redirect('supplies/create')->with('failed',"Thêm sản phẩm thất bại !");
                     }
             }else{
                 $supplie = Taisan::get();
-                return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
+                //return view('admin.supplies.muonvt',compact('giaoviens','today','supplie'));
             }
             //return redirect()->route('admin.login');
         }
@@ -410,13 +345,12 @@ class SuppliesController extends Controller
             $data = $request->input();
             $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
             $giaoviens = null;
-            //$iddata = Object.keys($data);
-            //$data["image"] = SuppliesController::insert_image($request);
-            if ($data["bomon"] !=0 && $data["idgv"] ==null){
+            $bomons = Bomon::get();
+            if ($data["bomon"] !=null && $data["idgv"] ==null){
                 try{ 
                     $supplie = Thietbi::where('idbomon','=',$data["bomon"])->get();
                     $giaoviens = User::where('idbomon','=',$data["bomon"])->get();         
-                    return view('admin.supplies.travt',compact('giaoviens','today','supplie'));
+                    return view('admin.supplies.travt',compact('bomons','giaoviens','today','supplie'));
                     }
                     catch(Exception $e)
                     {
@@ -460,20 +394,16 @@ class SuppliesController extends Controller
                         }
                     }
                     
-                    foreach($supplie as $ar){
-                        echo($ar->tentb);
-                    }
-                    
-                    return view('admin.supplies.xemmuon',compact('giaoviens','today','supplie'));
+                    return view('admin.supplies.xemmuon',compact('bomons','giaoviens','today','supplie'));
                     }
                     catch(Exception $e)
                     {
-                        //return redirect('supplies/create')->with('failed',"Thêm sản phẩm thất bại !");
+                        return redirect('supplies/')->with('failed',"Thất bại !");
                     }
             }
             else{
                 $supplie = Thietbi::get();
-                return view('admin.supplies.travt',compact('giaoviens','today','supplie'));
+                return view('admin.supplies.travt',compact('bomons','giaoviens','today','supplie'));
             }
             //return redirect()->route('admin.login');
         }

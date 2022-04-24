@@ -12,10 +12,9 @@
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Bộ môn</label>
                                 <select name="bomon" id="bomon" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'>
                                     <option value="">Chọn</option>
-                                    <option value="0">Tất cả</option>
-                                    <option value="1">Toán</option>
-                                    <option value="2">Lý</option>
-                                    <option value="3">Sinh</option>
+                                    @foreach($bomons as $bomon)
+                                        <option value="{{ $bomon->idbomon }}">{{ $bomon->tenbomon }}</option>
+                                    @endforeach 
                                 </select>
                             <label for="" class="list"><i style="color: blue" class="fal fa-filter"></i> Giáo Viên</label>
                             <select name="idgv" id="tengv" class="category combobox" onchange='if(this.value != null) { this.form.submit(); }'> 

@@ -3,10 +3,10 @@
         <a href="{{ route('admin.home.index') }}" class="link"><i class="fal fa-home"></i> Trang chủ</a>
     </li>
     <li class="menu_item">
-        <a href="" class="link"><i class="fal fa-tasks"></i> Quản lý tài sản công</a>
+        <a href="{{ route('admin.supplies.indexts') }}" class="link"><i class="fal fa-tasks"></i> Quản lý tài sản công</a>
         <ul class="sub">
             <li class="sub_item">
-                <a href="{{ route('admin.supplies.muonts') }}" class="link">Cập nhật tài sản</a>
+                <a href="{{ route('admin.supplies.indexts') }}" class="link">Cập nhật tài sản</a>
             </li>   
             <li class="sub_item">
                 <a href="{{ route('admin.supplies.indexts') }}" class="link">Thống kê tài sản</a>
@@ -14,7 +14,7 @@
         </ul>
     </li>
     <li class="menu_item">
-        <a href="" class="link"><i class="fal fa-id-card-alt"></i>Quản lý TB dạy học</a>
+        <a href="{{ route('admin.supplies.index') }}" class="link"><i class="fal fa-id-card-alt"></i>Quản lý TB dạy học</a>
         <ul class="sub">          
             <li class="sub_item">
                 <a href="{{ route('admin.supplies.muonvt') }}" class="link">Mượn thiết bị</a>
@@ -34,7 +34,7 @@
     </li> -->
 
     <li class="menu_item">
-        <a href="" class="link"><i class="fal fa-money-bill-wave"></i> Nhập dữ liệu</a>
+        <a href="{{ route('admin.supplies.import') }}" class="link"><i class="fal fa-money-bill-wave"></i> Nhập dữ liệu</a>
         <ul class="sub">
             <li class="sub_item">
                 <a href="{{ route('admin.supplies.import') }}" class="link">Danh mục Tài sản</a>

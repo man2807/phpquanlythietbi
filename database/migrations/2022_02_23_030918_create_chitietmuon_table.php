@@ -18,9 +18,9 @@ class CreateChiTietMuonTable extends Migration
             $table->string('matb')->nullable();
             $table->string('mamuon')->nullable();
             $table->Integer('soluongmuon')->nullable();
-            $table->string('soluongtratot')->nullable();
-            $table->string('soluongtrahong')->nullable();
-            $table->Integer('idbomon')->nullable();
+            $table->Integer('soluongtratot')->nullable();
+            $table->Integer('soluongtrahong')->nullable();
+            $table->string('idbomon')->nullable();
             $table->Integer('status')->nullable();
             $table->timestamps();
         });
