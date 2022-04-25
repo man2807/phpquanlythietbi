@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNhapTBTable extends Migration
+class CreateBoMonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,6 +28,6 @@ class CreateNhapTBTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhaptbs');
+        Schema::dropIfExists('bomons');
     }
 }
